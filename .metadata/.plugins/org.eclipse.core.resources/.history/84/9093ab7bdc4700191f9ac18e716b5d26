@@ -1,0 +1,308 @@
+package gifting_web;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+//import com.sun.org.apache.xpath.internal.operations.VariableSafeAbsRef;
+
+public class Main {
+	public static WebDriver driver;
+
+	public static void main(String[] args) throws InterruptedException, IOException {
+		// TODO Auto-generated method stub
+		Browser.openBrowser();
+		// Open chrome browser and maximize the window
+		Browser.enterURL("https://gifting-web.amebae21.hasura-app.io");
+		// Opens the gifting URL
+        Thread.sleep(2000);
+        
+		String button_type = "Agree";
+		//Searches the switchcase based on the string value for age gate
+			switch(button_type) {
+			case "Disagree":
+				driver.findElement(By.cssSelector("#app > div > div > div.button-group > button.btn.btn-secondary")).click();
+				Thread.sleep(1000);
+				break;
+			case "Agree":
+				driver.findElement(By.xpath("//*/div/div/div[2]/button[2]")).click();
+				Thread.sleep(1500);
+				break;
+		}
+		driver.findElement(By.cssSelector("#landing-new > div.hero-container > div.hero-content > a > button")).click();
+		//click on start gifting button
+		Thread.sleep(3000);
+		driver.findElement(By.cssSelector("#getstarted > div > div > div > div:nth-child(4) > a > button")).click();
+		//click on get started button
+		Thread.sleep(1000);
+		
+		String name = "Ash";
+		//enters the recipient name as string value
+		driver.findElement(By.cssSelector("#send-gift-name > div > div > div > div:nth-child(2) > div > input[type=\"text\"]")).sendKeys(name);
+		//click on receiver name input and enter the name in the text box
+		Thread.sleep(1000);
+		driver.findElement(By.cssSelector("#send-gift-name > div > div > div > div:nth-child(3) > a > button")).click();
+		//click on select city button
+		Thread.sleep(1000);
+		
+		String city = "Bengaluru";
+		//selects the recipient city based on string value
+		switch(city) {
+		case "Chennai":
+			driver.findElement(By.cssSelector("#\\35")).click();
+			Thread.sleep(1000);
+			break;
+		case "Bengaluru":
+			driver.findElement(By.cssSelector("#\\31")).click();
+			Thread.sleep(1000);
+			break;
+		case "Hyd":
+			driver.findElement(By.cssSelector("#\\31 6")).click();
+			Thread.sleep(1000);
+			break;
+		}
+		
+		driver.findElement(By.cssSelector("#send-gift-city > div > div > div > div:nth-child(2) > div:nth-child(4) > a > button")).click();
+		//click on recipient favorite drink button
+		Thread.sleep(1000);
+		
+		
+		//selects the recipient favourite genre
+		if(city.equals("Chennai")) {
+		String genre = "beer";
+		switch(genre) {
+		case "beer":
+			driver.findElement(By.cssSelector("#\\30")).click();
+			Thread.sleep(1000);
+			break;
+		case "rum":
+			driver.findElement(By.cssSelector("#\\31")).click();
+			Thread.sleep(1000);
+			break;
+		case "domesticwhisky":
+			driver.findElement(By.cssSelector("#\\32")).click();
+			Thread.sleep(1000);
+			break;
+		case "importedwhiskey":
+			driver.findElement(By.cssSelector("#\\33")).click();
+			Thread.sleep(1000);
+			break;
+		case "singlemaltwhiskey":
+			driver.findElement(By.cssSelector("#\\34")).click();
+			Thread.sleep(1000);
+			break;
+		case "domesticwine":
+			driver.findElement(By.cssSelector("#\\35")).click();
+			Thread.sleep(1000);
+			break;
+		case "importedwine":
+			driver.findElement(By.cssSelector("#\\36")).click();
+			Thread.sleep(1000);
+			break;
+		case "vodka":
+			driver.findElement(By.cssSelector("#\\37")).click();
+			Thread.sleep(1000);
+			break;
+		case "gin":
+			driver.findElement(By.cssSelector("#\\38")).click();
+			Thread.sleep(1000);
+			break;
+		case "tequila":
+			driver.findElement(By.cssSelector("#\\39")).click();
+			Thread.sleep(1000);
+			break;
+		case "brandy":
+			driver.findElement(By.cssSelector("#\\31 0")).click();
+			Thread.sleep(1000);
+			break;
+		case "liqueur":
+			driver.findElement(By.cssSelector("#\\31 1")).click();
+			Thread.sleep(1000);
+			break;
+		}
+		}
+		else if(city.equals("Bengaluru")) {
+			String genre = "beer";
+			switch(genre) {
+			case "beer":
+				driver.findElement(By.cssSelector("#\\30")).click();
+				Thread.sleep(1000);
+				break;
+			case "rtd":
+				driver.findElement(By.cssSelector("#\\31")).click();
+				Thread.sleep(1000);
+				break;
+			case "rum":
+				driver.findElement(By.cssSelector("#\\32")).click();
+				Thread.sleep(1000);
+				break;
+			case "domesticwhiskey":
+				driver.findElement(By.cssSelector("#\\33")).click();
+				Thread.sleep(1000);
+				break;
+			case "importedwhiskey":
+				driver.findElement(By.cssSelector("#\\34")).click();
+				Thread.sleep(1000);
+				break;
+			case "singlemaltwhiskey":
+				driver.findElement(By.cssSelector("#\\35")).click();
+				Thread.sleep(1000);
+				break;
+			case "domesticwine":
+				driver.findElement(By.cssSelector("#\\36")).click();
+				Thread.sleep(1000);
+				break;
+			case "vodka":
+				driver.findElement(By.cssSelector("#\\37")).click();
+				Thread.sleep(1000);
+				break;
+			}
+			
+		}
+		else if(city.equals("Hyd")) {
+			String genre = "singlemaltwhiskey";
+			switch(genre) {
+			case "countyside":
+				driver.findElement(By.cssSelector("#\\30")).click();
+				Thread.sleep(1000);
+				break;
+			case "domesticwhiskey":
+				driver.findElement(By.cssSelector("#\\31")).click();
+				Thread.sleep(1000);
+				break;
+			case "singlemaltwhiskey":
+				driver.findElement(By.cssSelector("#\\32")).click();
+				Thread.sleep(1000);
+				break;
+			}
+			
+		}
+		
+		driver.findElement(By.cssSelector("#send-gift-drink > div > div > div > div:nth-child(2) > div:nth-child(4) > a > button")).click();
+		//click on view drinks button
+		Thread.sleep(2000);
+		
+		
+		//Below if condition is to switch city using drop down menu
+		boolean f = false;
+		if(city.length() == 3 && f == true) {
+		Select changecity = new Select(driver.findElement(By.cssSelector("#product--listing__w-header > div:nth-child(1) > div > div > select")));
+		changecity.selectByValue("1");
+		}
+		else if(city.length() == 7 && f == true) {
+			Select changecity = new Select(driver.findElement(By.cssSelector("#product--listing__w-header > div:nth-child(1) > div > div > select")));
+		changecity.selectByValue("0");
+		}
+		else if(city.length() == 9 && f == true) {
+			Select changecity = new Select(driver.findElement(By.cssSelector("#product--listing__w-header > div:nth-child(1) > div > div > select")));
+			changecity.selectByValue("2");
+		}
+
+		
+		//iteration for the items listed under specific genre
+          //int[] skip = { 2,4,6 };
+           //for (int i2 : skip) {
+		    for (int i=1; i<=3; i++) {
+			//if (i != i2) {
+	        driver.findElement(By.xpath("//*[@id=\"BrandsListing\"]/div/div/div[2]/a["+ i + "]")).click();
+	        Thread.sleep(1500);
+	        driver.findElement(By.cssSelector("#product--details > div > div.paper.price > div.sku--container > div.sku--item > div.sku--item__desc > div.add-to-basket > button")).click();
+	        Thread.sleep(1000);
+	        driver.findElement(By.cssSelector("#Cross")).click();
+	        Thread.sleep(1000);
+	        driver.findElement(By.xpath("//*[@id=\"product--details\"]/div/div[1]/div[1]/a[1]")).click();
+	        
+	    	//}
+	      }
+		    driver.findElement(By.cssSelector("#product--listing__w-header > div:nth-child(2) > a")).click();
+		    Thread.sleep(1500);
+		    String promocodes = "Signin-Apply";
+		    switch(promocodes)
+		    {
+		    case "Signin-Apply":
+		    	driver.findElement(By.xpath("//*[@id=\"gift--basket\"]/div/div/div[2]/div[1]/div")).click();
+		        Thread.sleep(1000);
+		        driver.findElement(By.xpath("//*[@id=\"SignIn\"]/div[1]/div/div/input")).sendKeys("9940191137");
+		        driver.findElement(By.cssSelector("#SignIn > div.page-footer > div > div:nth-child(1) > button.btn.btn-primary.small")).click();
+		        Thread.sleep(2000);
+		        ((JavascriptExecutor)driver).executeScript("window.open()");
+			    ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+			    driver.switchTo().window(tabs.get(1));
+				driver.get("https://control.msg91.com/signin");
+				Thread.sleep(5000);
+				driver.findElement(By.xpath("//*[@id=\"login\"]")).sendKeys("tech@hipbar.com");
+				Thread.sleep(1500);
+				driver.findElement(By.xpath("//*[@id=\"iwntuspswd2\"]")).click();
+				Thread.sleep(1500);
+				driver.findElement(By.xpath("//*[@id=\"pass\"]")).sendKeys("getclosertobooze");
+				Thread.sleep(1500);
+				driver.findElement(By.xpath("/html/body/div[2]/div/div[3]/div/div/div/form[2]/div[2]/div/div/button")).click();
+				Thread.sleep(5000);
+				driver.findElement(By.xpath("/html/body/div[3]/div/div[1]/div[3]/div/div[4]/ul/li[2]/a")).click();
+				Thread.sleep(4500);
+				driver.findElement(By.xpath("//*[@id=\"filter_string\"]")).sendKeys("9940191137");
+				Thread.sleep(1500);
+				driver.findElement(By.xpath("//*[@id=\"searchRecord\"]")).click();
+				Thread.sleep(3000);
+				driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div[1]/div[1]/div[5]/form/table/tbody/tr[1]/td[3]/a/div")).click();
+				Thread.sleep(1500);
+				Browser.scroll1p();
+				WebElement TxtBoxContent = driver.findElement(By.cssSelector("#msgPreview > textarea"));
+				Actions act = new Actions(driver);
+				act.moveToElement(TxtBoxContent).doubleClick().build().perform();
+				String s1 = TxtBoxContent.getText();
+						System.out.println(s1);
+				String s2= s1.substring(55, 61);
+					System.out.println(s2);
+					Thread.sleep(1500);
+				Browser.scroll1n();
+				Thread.sleep(1000);
+				driver.findElement(By.xpath("/html/body/div[12]/div[1]/button")).click();
+				Thread.sleep(1000);
+				driver.switchTo().window(tabs.get(0));
+				Thread.sleep(1500);
+	            driver.findElement(By.xpath("//*[@id=\"SignIn\"]/div[1]/div[4]/div/input")).sendKeys(s2);
+	            Thread.sleep(1500);
+	            driver.findElement(By.cssSelector("#SignIn > div.page-footer > div:nth-child(1) > button.btn.btn-primary.small")).click();
+	            Thread.sleep(1500);
+	            driver.findElement(By.xpath("//*[@id=\"gift--basket\"]/div/div/div[2]/div[1]/div")).click();
+	            Thread.sleep(3500);
+	            String xpath = driver.findElement(By.xpath("//*[@id=\"promo--codes\"]/div[2]/p")).getText();
+	            System.out.println(xpath);
+	            Thread.sleep(2000);
+	            if(xpath.contains("No Coupons")) {
+	            	System.out.println("promo validation:" +xpath);
+	            	Thread.sleep(1000);
+	            	driver.findElement(By.xpath("//*[@id=\"promo--codes\"]/div[1]/div/span")).click();
+            		Thread.sleep(1500);
+	            	
+	            }
+	            // promoinput = "#promo--codes > div.promo--code__form > div > input";
+	            	else {
+	            		driver.findElement(By.xpath("//*[@id=\"promo--codes\"]/div[1]/div/input")).sendKeys("TESLA");
+	            		driver.findElement(By.xpath("//*[@id=\"promo--codes\"]/div[1]/div/span")).click();
+	            		Thread.sleep(1500);
+	            }
+	            break;
+		    case "Apply":
+		    	driver.findElement(By.xpath("//*[@id=\"gift--basket\"]/div/div/div[2]/div[1]/div")).click();
+	            Thread.sleep(2500);
+		    	
+		        
+		    }
+        }
+	  }
+		

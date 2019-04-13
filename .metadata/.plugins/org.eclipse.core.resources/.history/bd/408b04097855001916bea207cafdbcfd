@@ -1,0 +1,568 @@
+package gifting_web;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.RandomStringUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+//import com.sun.org.apache.xpath.internal.operations.VariableSafeAbsRef;
+
+public class Main {
+	public static WebDriver driver;
+
+	public static void main(String[] args) throws InterruptedException, IOException {
+		// TODO Auto-generated method stub
+		Browser.openBrowser();
+		// Open chrome browser and maximize the window
+		System.out.println("Browser is opened");
+		
+		Browser.enterURL("https://gifting-web.amebae21.hasura-app.io");
+		// Opens the gifting URL
+		String URL = driver.getCurrentUrl();
+		// Gets the currentUrl and stores it in URL variable
+		
+		
+		//Below if condition is to check whether the given url is launched successfully or not
+		if(URL.contains("https://gifting-web.amebae21.hasura-app.io"))
+		{
+		System.out.println("Given URL is launched");
+		}
+		else
+		{
+			System.out.println("Given URL is failed to launch");
+		}
+        Thread.sleep(2000);
+        
+        
+		String button_type = "Agree";
+		//Searches the switchcase based on the string value for age gate
+		
+			switch(button_type) {
+			case "Disagree":
+				driver.findElement(By.cssSelector("#app > div > div > div.button-group > button.btn.btn-secondary")).click();
+				Thread.sleep(1000);
+				System.out.println("Disagree button is clicked on Age gate page");
+				break;
+				
+			case "Agree":
+				driver.findElement(By.xpath("//*/div/div/div[2]/button[2]")).click();
+				Thread.sleep(1500);
+				System.out.println("Agree button is clicked on Age gate page");
+				break;
+				
+		}
+			
+		driver.findElement(By.cssSelector("#landing-new > div.hero-container > div.hero-content > a > button")).click();
+		//click on start gifting button
+		System.out.println("Start gifting button is clicked on Homepage");
+		Thread.sleep(3000);
+		
+		driver.findElement(By.cssSelector("#getstarted > div > div > div > div:nth-child(4) > a > button")).click();
+		//click on get started button
+		System.out.println("Get started button is clicked");
+		Thread.sleep(1000);
+		
+		String name = "Ash";
+		//enters the recipient name as string value
+		
+		driver.findElement(By.cssSelector("#send-gift-name > div > div > div > div:nth-child(2) > div > input[type=\"text\"]")).sendKeys(name);
+		//click on receiver name input and enter the name in the text box
+		System.out.println("Recipient Name entered:" +name);
+		Thread.sleep(1000);
+		
+		driver.findElement(By.cssSelector("#send-gift-name > div > div > div > div:nth-child(3) > a > button")).click();
+		//click on select city button
+		System.out.println("Select city button is clicked");
+		Thread.sleep(1000);
+		
+		String city = "Chennai";
+		//selects the recipient city based on string value
+		switch(city) {
+		case "Chennai":
+			driver.findElement(By.id("5")).click();
+			Thread.sleep(1000);
+			System.out.println("Chennai city is selected");
+			break;
+		case "Bengaluru":
+			driver.findElement(By.xpath("//*[@id=\"1\"]")).click();
+			Thread.sleep(1000);
+			System.out.println("Bengaluru city is selected");
+			break;
+		case "Hyd":
+			driver.findElement(By.cssSelector("#\\31 6")).click();
+			Thread.sleep(1000);
+			System.out.println("Hyderabad city is selected");
+			break;
+		}
+		
+		driver.findElement(By.cssSelector("#send-gift-city > div > div > div > div:nth-child(2) > div:nth-child(4) > a > button")).click();
+		//click on recipient favorite drink button
+		System.out.println("Recipient favorite drink button is clicked");
+		Thread.sleep(1000);
+		
+		
+		//selects the recipient favourite genre
+		if(city.equals("Chennai")) {
+		String genre = "beer";
+		System.out.println("Selected genre:" +genre);
+		switch(genre) {
+		case "beer":
+			driver.findElement(By.cssSelector("#\\30")).click();
+			Thread.sleep(1000);
+			break;
+		case "rum":
+			driver.findElement(By.cssSelector("#\\31")).click();
+			Thread.sleep(1000);
+			break;
+		case "domesticwhisky":
+			driver.findElement(By.cssSelector("#\\32")).click();
+			Thread.sleep(1000);
+			break;
+		case "importedwhiskey":
+			driver.findElement(By.cssSelector("#\\33")).click();
+			Thread.sleep(1000);
+			break;
+		case "singlemaltwhiskey":
+			driver.findElement(By.cssSelector("#\\34")).click();
+			Thread.sleep(1000);
+			break;
+		case "domesticwine":
+			driver.findElement(By.cssSelector("#\\35")).click();
+			Thread.sleep(1000);
+			break;
+		case "importedwine":
+			driver.findElement(By.cssSelector("#\\36")).click();
+			Thread.sleep(1000);
+			break;
+		case "vodka":
+			driver.findElement(By.cssSelector("#\\37")).click();
+			Thread.sleep(1000);
+			break;
+		case "gin":
+			driver.findElement(By.cssSelector("#\\38")).click();
+			Thread.sleep(1000);
+			break;
+		case "tequila":
+			driver.findElement(By.cssSelector("#\\39")).click();
+			Thread.sleep(1000);
+			break;
+		case "brandy":
+			driver.findElement(By.cssSelector("#\\31 0")).click();
+			Thread.sleep(1000);
+			break;
+		case "liqueur":
+			driver.findElement(By.cssSelector("#\\31 1")).click();
+			Thread.sleep(1000);
+			break;
+		}
+		}
+		else if(city.equals("Bengaluru")) {
+			String genre = "beer";
+			switch(genre) {
+			case "beer":
+				driver.findElement(By.cssSelector("#\\30")).click();
+				Thread.sleep(1000);
+				break;
+			case "rtd":
+				driver.findElement(By.cssSelector("#\\31")).click();
+				Thread.sleep(1000);
+				break;
+			case "rum":
+				driver.findElement(By.cssSelector("#\\32")).click();
+				Thread.sleep(1000);
+				break;
+			case "domesticwhiskey":
+				driver.findElement(By.cssSelector("#\\33")).click();
+				Thread.sleep(1000);
+				break;
+			case "importedwhiskey":
+				driver.findElement(By.cssSelector("#\\34")).click();
+				Thread.sleep(1000);
+				break;
+			case "singlemaltwhiskey":
+				driver.findElement(By.cssSelector("#\\35")).click();
+				Thread.sleep(1000);
+				break;
+			case "domesticwine":
+				driver.findElement(By.cssSelector("#\\36")).click();
+				Thread.sleep(1000);
+				break;
+			case "vodka":
+				driver.findElement(By.cssSelector("#\\37")).click();
+				Thread.sleep(1000);
+				break;
+			}
+			
+		}
+		else if(city.equals("Hyd")) {
+			String genre = "singlemaltwhiskey";
+			switch(genre) {
+			case "countyside":
+				driver.findElement(By.cssSelector("#\\30")).click();
+				Thread.sleep(1000);
+				break;
+			case "domesticwhiskey":
+				driver.findElement(By.cssSelector("#\\31")).click();
+				Thread.sleep(1000);
+				break;
+			case "singlemaltwhiskey":
+				driver.findElement(By.cssSelector("#\\32")).click();
+				Thread.sleep(1000);
+				break;
+			}
+		}
+		
+		
+		driver.findElement(By.cssSelector("#send-gift-drink > div > div > div > div:nth-child(2) > div:nth-child(4) > a > button")).click();
+		//click on view drinks button
+		System.out.println("View drinks button is clicked");
+		Thread.sleep(2000);
+		
+		
+		//Below if condition is to switch city using drop down menu
+		boolean f = false;
+		if(city.length() == 3 && f == true) {
+		Select changecity = new Select(driver.findElement(By.cssSelector("#product--listing__w-header > div:nth-child(1) > div > div > select")));
+		changecity.selectByValue("1");
+		}
+		else if(city.length() == 7 && f == true) {
+			Select changecity = new Select(driver.findElement(By.cssSelector("#product--listing__w-header > div:nth-child(1) > div > div > select")));
+		changecity.selectByValue("0");
+		}
+		else if(city.length() == 9 && f == true) {
+			Select changecity = new Select(driver.findElement(By.cssSelector("#product--listing__w-header > div:nth-child(1) > div > div > select")));
+			changecity.selectByValue("2");
+		}
+
+		
+		//iteration for the items listed under specific genre
+          //int[] skip = { 2,4,6 };
+           //for (int i2 : skip) {
+		if(city == "Bengaluru") {
+		    for (int i=1; i<=3; i++) {
+			//if (i != i2) {
+	        driver.findElement(By.xpath("//*[@id=\"BrandsListing\"]/div/div/div[2]/a["+ i + "]")).click();
+	        Thread.sleep(1500);
+	        driver.findElement(By.cssSelector("#product--details > div > div.paper.price > div.sku--container > div.sku--item > div.sku--item__desc > div.add-to-basket > button")).click();
+	        Thread.sleep(1000);
+	        driver.findElement(By.cssSelector("#Cross")).click();
+	        Thread.sleep(1000);
+	        driver.findElement(By.xpath("//*[@id=\"product--details\"]/div/div[1]/div[1]/a[1]")).click();
+	        
+	    	}
+	      }
+		else if(city == "Chennai") {
+			for(int i=1;i<=3;i++) {
+				driver.findElement(By.xpath("//*[@id=\"BrandsListing\"]/div/div/div[2]/a["+ i + "]")).click();
+		        Thread.sleep(1500);
+		        driver.findElement(By.cssSelector("#product--details > div > div.paper.price > div.sku--container > div.sku--item > div.sku--item__desc > div.add-to-basket > button")).click();
+		        Thread.sleep(1000);
+		        driver.findElement(By.xpath("//*[@id=\"modal-box2\"]/div/div/div[1]/p/span")).click();
+		        Thread.sleep(1000);
+		        driver.findElement(By.xpath("//*[@id=\"product--details\"]/div/div[1]/div[1]/a[1]")).click();
+			}
+		}
+		System.out.println("N number of items are being iterated and added to basket for the following city:" +city);
+		
+		
+		    driver.findElement(By.cssSelector("#product--listing__w-header > div:nth-child(2) > a")).click();
+		    //Gift basket is clicked
+		    System.out.println("Gift basket tab is clicked");
+		    Thread.sleep(1500);
+		    
+		    String promocodes = "Signin-Apply";
+		    switch(promocodes)
+		    {
+		    case "Signin-Apply":
+		    	driver.findElement(By.xpath("//*[@id=\"gift--basket\"]/div/div/div[2]/div[1]/div")).click();
+		    	System.out.println("Sign in to view promo codes is clicked");
+		        Thread.sleep(1000);
+		        driver.findElement(By.xpath("//*[@id=\"SignIn\"]/div[1]/div/div/input")).sendKeys("9940191137");
+		        System.out.println("Consumer Number is hardcoded");
+		        driver.findElement(By.cssSelector("#SignIn > div.page-footer > div > div:nth-child(1) > button.btn.btn-primary.small")).click();
+		        System.out.println("Proceed button is clicked");
+		        Thread.sleep(2000);
+		        ((JavascriptExecutor)driver).executeScript("window.open()");
+			    ArrayList<String> tabs = new ArrayList<String> (driver.getWindowHandles());
+			    driver.switchTo().window(tabs.get(1));
+			    System.out.println("New browser tab is opened");
+				driver.get("https://control.msg91.com/signin");
+				Thread.sleep(5000);
+				String newtabURL = driver.getCurrentUrl();
+				if(newtabURL.contains("control.msg91.com/signin"))
+				{
+					System.out.println("Current tab URL is:" +newtabURL);
+				}
+				else
+				{
+					System.out.println("Given url failed to launch");
+				}
+				
+				driver.findElement(By.xpath("//*[@id=\"login\"]")).sendKeys("tech@hipbar.com");
+				System.out.println("Username is hardcoded");
+				Thread.sleep(1500);
+				driver.findElement(By.xpath("//*[@id=\"iwntuspswd2\"]")).click();
+				System.out.println("Checkbox is selected");
+				Thread.sleep(1500);
+				driver.findElement(By.xpath("//*[@id=\"pass\"]")).sendKeys("getclosertobooze");
+				System.out.println("Password is hardcoded");
+				Thread.sleep(1500);
+				driver.findElement(By.xpath("/html/body/div[2]/div/div[3]/div/div/div/form[2]/div[2]/div/div/button")).click();
+				Thread.sleep(5000);
+				driver.findElement(By.xpath("/html/body/div[3]/div/div[1]/div[3]/div/div[4]/ul/li[2]/a")).click();
+				Thread.sleep(6000);
+				driver.findElement(By.xpath("//*[@id=\"filter_string\"]")).sendKeys("9940191137");
+				System.out.println("Mobile number is hardcoded in search box");
+				Thread.sleep(1500);
+				driver.findElement(By.xpath("//*[@id=\"searchRecord\"]")).click();
+				System.out.println("Search button is clicked");
+				Thread.sleep(3500);
+				driver.findElement(By.xpath("/html/body/div[3]/div/div[2]/div[1]/div[1]/div[5]/form/table/tbody/tr[1]/td[3]/a/div")).click();
+				System.out.println("Last OTP for the hardcoded mobile number link is clicked");
+				Thread.sleep(4000);
+				Browser.scroll1p();
+				Thread.sleep(2000);
+				WebElement TxtBoxContent = driver.findElement(By.xpath("//*[@id=\"msgPreview\"]//textarea"));
+				Actions act = new Actions(driver);
+				act.moveToElement(TxtBoxContent).doubleClick().build().perform();
+				String s1 = TxtBoxContent.getText();
+						System.out.println("OTP Text box message is:" +s1);
+				String s2= s1.substring(55, 61);
+					System.out.println("OTP substring message is:" +s2);
+					Thread.sleep(1500);
+				Browser.scroll1n();
+				Thread.sleep(1000);
+				driver.findElement(By.xpath("/html/body/div[12]/div[1]/button")).click();
+				System.out.println("Closing the pop up window");
+				Thread.sleep(1000);
+				driver.switchTo().window(tabs.get(0));
+				System.out.println("Switching tabs from 1 to 0");
+				Thread.sleep(1500);
+	            driver.findElement(By.xpath("//*[@id=\"SignIn\"]/div[1]/div[4]/div/input")).sendKeys(s2);
+	            System.out.println("OTP Text box is clicked and the stored OTP value in a variable is hardcoded");
+	            Thread.sleep(1500);
+	            driver.findElement(By.cssSelector("#SignIn > div.page-footer > div:nth-child(1) > button.btn.btn-primary.small")).click();
+	            System.out.println("Signin to Proceed button is clicked");
+	            Thread.sleep(1500);
+	            driver.findElement(By.xpath("//*[@id=\"gift--basket\"]/div/div/div[2]/div[1]/div")).click();
+	            System.out.println("Apply promo code tab is clicked");
+	            Thread.sleep(4500);
+	            //String xpath = driver.findElement(By.xpath("//*[@id=\"promo--codes\"]/div[2]/p")).getText();
+	            //System.out.println(xpath);
+	            //Thread.sleep(2000);
+	            String qamani = driver.findElement(By.xpath("//*[@id=\"promo--codes\"]/div[2]/div/div[1]/div[1]/p[1]")).getText();
+	            System.out.println("Listed promo code is:" +qamani);
+	            Thread.sleep(1500);
+	            String amount = driver.findElement(By.xpath("//*[@id=\"gift--basket\"]/div/div/div[2]/div[2]/div/div[1]/div/p[2]")).getText();
+	            System.out.println("Amount to be paid in String value:" +amount);
+	            String topay = amount.substring(2, 4);
+	            System.out.println("Amount to be paid is converted to interger value:" +topay);
+	            Thread.sleep(1000);
+	            int itest = Integer.parseInt(topay);
+	            try {
+	            
+	            // promoinput = "#promo--codes > div.promo--code__form > div > input";
+	    
+	            		//driver.findElement(By.xpath("//*[@id=\"promo--codes\"]/div[1]/div/input")).sendKeys("TESLA")
+	            	if(itest >= 100) {
+	            if(qamani.contains("QAMANI"))
+	            	{
+	            			driver.findElement(By.xpath("//*[@id=\"promo--codes\"]/div[1]/div/input")).sendKeys(qamani);
+	            			Thread.sleep(1000);
+	            			driver.findElement(By.xpath("//*[@id=\"promo--codes\"]/div[1]/div/span")).click();
+	            			Thread.sleep(1500);
+	            	}
+	            else if(driver.findElement(By.xpath("//*[@id=\"promo--codes\"]/div[2]/p")).isDisplayed()) {
+	            	System.out.println("No promo codes available");
+	            	Thread.sleep(1000);
+	            	driver.findElement(By.xpath("//*[@id=\"modal-box2\"]/div/div/div[1]/p/div/div[2]")).click();
+            		Thread.sleep(1500);
+	            	
+	            }
+	            }
+	            	else
+	            		System.out.println("Promo conditions are not met");
+	            }
+		    catch(Exception e) {
+		    	System.out.println("No such element");
+		    }
+	            driver.findElement(By.xpath("//*[@id=\"modal-box2\"]/div/div/div[1]/p/div/div[2]")).click();
+	            Thread.sleep(1500);
+	            break;
+	            
+		    case "Apply":
+		    	driver.findElement(By.xpath("//*[@id=\"gift--basket\"]/div/div/div[2]/div[1]/div")).click();
+	            Thread.sleep(4000);
+	            String qamani1 = driver.findElement(By.xpath("//*[@id=\"promo--codes\"]/div[2]/div/div[1]/div[1]/p[1]")).getText();
+	            System.out.println(qamani1);
+	            Thread.sleep(1500);
+	            String amount1 = driver.findElement(By.xpath("//*[@id=\"gift--basket\"]/div/div/div[2]/div[2]/div/div[1]/div/p[2]")).getText();
+	            System.out.println(amount1);
+	            String topay1 = amount1.substring(2, 4);
+	            System.out.println(topay1);
+	            Thread.sleep(1000);
+	            int itest1 = Integer.parseInt(topay1);
+	            try {
+	            	if(itest1 >= 100) {
+	            if(qamani1.contains("QAMANI"))
+            	{
+            			driver.findElement(By.xpath("//*[@id=\"promo--codes\"]/div[1]/div/input")).sendKeys(qamani1);
+            			Thread.sleep(1000);
+            			driver.findElement(By.xpath("//*[@id=\"promo--codes\"]/div[1]/div/span")).click();
+            			Thread.sleep(1500);
+            	}
+	            else if(driver.findElement(By.xpath("//*[@id=\"promo--codes\"]/div[2]/p")).isDisplayed()) {
+	            	System.out.println("No promo codes available");
+	            	Thread.sleep(1000);
+	            	driver.findElement(By.xpath("//*[@id=\"modal-box2\"]/div/div/div[1]/p/div/div[2]")).click();
+            		Thread.sleep(1500);
+	            	
+	            }
+	            }
+	            	else
+	            		System.out.println("Promo conditions are not met");
+	            }
+	            catch(Exception e) {
+			    	System.out.println("No such element");
+			    }
+	            driver.findElement(By.xpath("//*[@id=\"modal-box2\"]/div/div/div[1]/p/div/div[2]")).click();
+	            Thread.sleep(1500);
+	            break;
+		    }
+		    
+	            driver.findElement(By.xpath("//*[@id=\"gift--basket\"]/div/div/div[2]/div[3]/a/button")).click();
+	            Thread.sleep(2000);
+	            System.out.println("Personalise button is clicked");
+	            
+	            switch("Manual") {
+	            case "Manual":
+	            	driver.findElement(By.xpath("//*[@id=\"giftInputForm\"]/div/div/div[3]/div/textarea")).sendKeys("Hi, Enjoy your drink!");
+	            	Thread.sleep(1000);
+	            	System.out.println("Personal message entered is hardcoded");
+	            	break;
+	            case"Automatic":
+	            	String generatedString = RandomStringUtils.randomAlphabetic(250);
+	    		    System.out.println(generatedString);
+	    			driver.findElement(By.xpath("//*[@id=\\\"giftInputForm\\\"]/div/div/div[3]/div/textarea")).sendKeys(generatedString);
+	    			System.out.println("Personal message entered is auto generated");
+	    			Thread.sleep(1500);
+	    			
+	    			break;
+	            }
+	            
+	            JavascriptExecutor jse = (JavascriptExecutor)driver;
+	    		jse.executeScript("window.scrollBy(0,400)", "");
+	    		Thread.sleep(1000);
+	    		driver.findElement(By.xpath("//*[@id=\"giftInputForm\"]/div/div/div[4]/div[2]/div/input")).sendKeys("9940191137");
+	    		Thread.sleep(1000);
+	    		System.out.println("Receiver mobile number entered is hardcoded");
+	    		jse.executeScript("window.scrollBy(0,400)", "");
+	    		Thread.sleep(1000);
+	    		driver.findElement(By.xpath("//*[@id=\"giftInputForm\"]/div/div/div[5]/div[3]/div/span[1]")).click();
+	    		Thread.sleep(1000);
+	    		System.out.println("Checkbox is clicked");
+	    	
+	    		
+	    		boolean a = false;
+	            WebElement tc = driver.findElement(By.linkText("Terms & Conditions"));
+	            
+	            
+	            if(tc.isDisplayed() && a == true) 
+	            {
+	            	tc.click();
+	                System.out.println("Terms&Conditions link is clicked and opened in a new tab");
+	                Thread.sleep(1500);
+	                System.out.println("Terms and conditions <a> link is being clicked and opened in a new tab");
+	                ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
+	                driver.switchTo().window(tabs1.get(0));
+	                System.out.println("Switch back to the old tab");
+	                driver.findElement(By.xpath("//*[@id=\"giftInputForm\"]/div/div/div[6]/button")).click();
+	            	Thread.sleep(1500);
+	            	System.out.println("Proceed to Pay button is clicked");
+	            }
+	            else 
+	            {
+	            	driver.findElement(By.xpath("//*[@id=\"giftInputForm\"]/div/div/div[6]/button")).click();
+	            	Thread.sleep(1500);
+	            	System.out.println("Proceed to Pay button is clicked");
+	            }
+	    		
+	            String payment_type = "Debit/Credit";
+	            
+	            switch(payment_type) {
+	            
+	            case "Debit/Credit":
+	            	driver.findElement(By.xpath("//*[@id=\"1\"]")).click();
+	            	Thread.sleep(1000);
+	            	System.out.println("Debit/Credit card radio button is clicked");
+	            	jse.executeScript("window.scrollBy(0,400)", "");
+		    		Thread.sleep(1000);
+	            	driver.findElement(By.xpath("//*[@id=\"checkout\"]/div/div/div[2]/div[1]/div/div/div[3]/div[2]/div[1]/input")).sendKeys("4242424242424242");
+	            	Thread.sleep(1000);
+	            	System.out.println("Card Number is entered and it is hardcoded");
+	            	driver.findElement(By.xpath("//*[@id=\"checkout\"]/div/div/div[2]/div[1]/div/div/div[3]/div[2]/div[2]/div[1]/input")).sendKeys("0520");
+	            	Thread.sleep(1000);
+	            	System.out.println("Expiry date is entered and it is hardcoded");
+	            	driver.findElement(By.xpath("//*[@id=\"checkout\"]/div/div/div[2]/div[1]/div/div/div[3]/div[2]/div[2]/div[2]/input")).sendKeys("111");
+	            	Thread.sleep(1000);
+	            	System.out.println("CVV is entered and it is hardcoded");
+	            	driver.findElement(By.xpath("//*[@id=\"checkout\"]/div/div/div[2]/div[1]/div/div/div[3]/div[2]/div[3]/input")).sendKeys("Test");
+	            	Thread.sleep(1000);
+	            	System.out.println("Name on the card is entered and it is hardcoded");
+	            	jse.executeScript("window.scrollBy(0,300)", "");
+		    		Thread.sleep(1000);
+		    		driver.findElement(By.xpath("//*[@id=\"checkout\"]/div/div/div[2]/div[2]/button")).click();
+		    		System.out.println("Pay button is clicked");
+		    		Thread.sleep(8000);
+		    		
+		    		String title = driver.getTitle();
+		    		if(title.contains("transaction-successful")) 
+		    		{
+		    			driver.findElement(By.xpath("//*[@id=\"header\"]/div/div[2]/div/span[2]")).click();
+		    			System.out.println("Logout drop down button is clicked");
+		    			Thread.sleep(1000);
+		    			driver.findElement(By.linkText("Transaction History")).click();
+		    			System.out.println("Under the logout drop down button transaction history is clicked");
+		    			Thread.sleep(1500);
+		    			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/TransactionHistory.png");
+		    			jse.executeScript("window.scrollBy(0,300)", "");
+			    		Thread.sleep(1000);
+			    		Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/TransactionHistory1.png");
+			    		Thread.sleep(1000);
+			    		driver.findElement(By.linkText(" Sign Out")).click();
+			    		Thread.sleep(1500);
+			    		Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/SignOutPage.png");
+			    		Thread.sleep(1000);
+		    		}
+		    		else 
+		    		{
+		    			System.out.println("transaction-failed");
+		    		}
+		    		break;
+		    		
+	            case "Netbanking":
+	            	driver.findElement(By.xpath("//*[@id=\"2\"]")).click();
+	            	System.out.println("Netbanking radio button is clicked");
+	            	Thread.sleep(1000);
+	            	
+		    		
+	            }
+	            
+	            
+		        
+		    }
+        }
+		

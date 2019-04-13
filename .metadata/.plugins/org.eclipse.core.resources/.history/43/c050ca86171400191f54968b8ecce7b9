@@ -1,0 +1,40 @@
+package gifting_web;
+
+import java.util.Random;
+
+import org.apache.commons.lang.RandomStringUtils;
+import org.openqa.selenium.By;
+
+public class Sendgiftcards extends Main {
+	public static void sendGCtab() throws InterruptedException {
+		driver.findElement(By.xpath("/html/body/div[1]/div/div/div[1]/div[1]/a[1]/div")).click();
+		Thread.sleep(3000);
+	}
+	public static void switchcase( int amount) throws InterruptedException {
+		
+		switch(amount) {
+		case 500:
+			driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/div[1]/div/div[2]/div[1]/div/div[1]/input")).click();
+			break;
+		case 1000:
+			driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/div[1]/div/div[2]/div[1]/div/div[2]/input")).click();
+			break;
+		case 2000:
+			driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/div[1]/div/div[2]/div[1]/div/div[3]/input")).click();
+			break;
+		}
+	}
+		public static void otherBtn_click() throws InterruptedException {
+			Random rand = new Random();
+			int n = rand.nextInt(10000) + 100;
+			driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/div[1]/div/div[2]/div[1]/div/div[4]/input")).sendKeys(String.valueOf(n));
+			Thread.sleep(2000);
+			
+	}
+		public static void personalmessage_click(int value) {
+			driver.findElement(By.xpath("//*[@id=\"send-gift\"]/div[2]/div/div[1]/div/div[2]/div[2]/textarea")).click();
+			String generatedString = RandomStringUtils.randomAlphabetic(value);
+		    System.out.println(generatedString);
+		}
+		}
+

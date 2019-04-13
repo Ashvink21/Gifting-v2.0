@@ -1,0 +1,53 @@
+package gifting_web;
+import org.openqa.selenium.WebDriver;
+
+public class Main {
+	public static WebDriver driver;
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		Browser.openBrowser();
+		// TODO Open chrome browser and maximize the window
+		Browser.enterURL("https://gifting-web.amebae21.hasura-app.io");
+		// TODO Opens the gifting URL
+		Agegate.legalAge();
+		//TODO Legal drinking age link is opened
+	    Agegate.switchTabs();
+	    //TODO Closes the newly opened link
+	    //TODO Displays the previous tab
+		Agegate.agreeBtn_click();
+		//TODO Agree button on Age pop-up is clicked
+		Homepage.startgiftingBtn_click();
+		//TODO Start gifting button at the top of the page is clicked
+		Browser.navigateBack();
+		//TODO It will navigate back to the homepage
+		Browser.scroll5p();
+		//TODO Scrolls down the page five times
+		Homepage.applestoreBtn_click();
+		//TODO Apple store button is clicked
+		Homepage.switchtabs();
+	    //TODO Closes the apple store tab
+	    //TODO Displays the homepage
+	    Homepage.playstoreBtn_click();
+	    //TODO Play store button is clicked
+	    Homepage.switchtabs1();
+	    //TODO Closes the play store tab
+	    //TODO Displays the homepage
+	    Homepage.retailoutletsBtn_click();
+	    //TODO Retail outlets button is clicked
+	    Browser.navigateBack();
+	    //TODO It will navigate back to homepage
+	    Browser.scroll1p();
+		//TODO Scrolls down one time
+	    Homepage.startgiftingBtn2_click();
+	    //TODO Retail outlets button is clicked
+	    Browser.navigateBack();
+	    //TODO It will navigate back to homepage
+	    Browser.scroll6n();
+		//TODO Scrolls up the page six times
+		Sendgiftcards.sendGCtab();
+		//TODO Send gift cards tab link is clicked
+
+	}
+
+}

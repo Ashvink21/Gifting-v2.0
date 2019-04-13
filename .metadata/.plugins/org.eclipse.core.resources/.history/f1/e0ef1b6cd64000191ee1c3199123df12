@@ -1,0 +1,208 @@
+package gifting_web;
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Main {
+	public static WebDriver driver;
+
+	public static void main(String[] args) throws InterruptedException, IOException {
+		// TODO Auto-generated method stub
+		Browser.openBrowser();
+		// Open chrome browser and maximize the window
+		Browser.enterURL("https://gifting-web.amebae21.hasura-app.io");
+		// Opens the gifting URL
+        Thread.sleep(2000);
+        
+		String button_type = "Agree";
+		//Searches the switchcase based on the string value
+			switch(button_type) {
+			case "Disagree":
+				driver.findElement(By.cssSelector("#app > div > div > div.button-group > button.btn.btn-secondary")).click();
+				Thread.sleep(1000);
+				break;
+			case "Agree":
+				driver.findElement(By.xpath("//*/div/div/div[2]/button[2]")).click();
+				Thread.sleep(1500);
+				break;
+		}
+		driver.findElement(By.cssSelector("#landing-new > div.hero-container > div.hero-content > a > button")).click();
+		//click on start gifting button
+		Thread.sleep(3000);
+		driver.findElement(By.cssSelector("#getstarted > div > div > div > div:nth-child(4) > a > button")).click();
+		//click on get started button
+		Thread.sleep(1000);
+		
+		String name = "Ash";
+		//enters the recipient name as string value
+		driver.findElement(By.cssSelector("#send-gift-name > div > div > div > div:nth-child(2) > div > input[type=\"text\"]")).sendKeys(name);
+		//click on receiver name input and enter the name in the text box
+		Thread.sleep(1000);
+		driver.findElement(By.cssSelector("#send-gift-name > div > div > div > div:nth-child(3) > a > button")).click();
+		//click on select city button
+		Thread.sleep(1000);
+		
+		String city = "Bengaluru";
+		//selects the recipient city based on string value
+		switch(city) {
+		case "Chennai":
+			driver.findElement(By.cssSelector("#\\35")).click();
+			Thread.sleep(1000);
+			break;
+		case "Bengaluru":
+			driver.findElement(By.cssSelector("#\\31")).click();
+			Thread.sleep(1000);
+			break;
+		case "Hyd":
+			driver.findElement(By.cssSelector("#\\31 6")).click();
+			Thread.sleep(1000);
+			break;
+		}
+		
+		driver.findElement(By.cssSelector("#send-gift-city > div > div > div > div:nth-child(2) > div:nth-child(4) > a > button")).click();
+		//click on recipient favorite drink button
+		Thread.sleep(1000);
+		
+		
+		//selects the recipient favourite genre
+		if(city.equals("Chennai")) {
+		String genre = "beer";
+		switch(genre) {
+		case "beer":
+			driver.findElement(By.cssSelector("#\\30")).click();
+			Thread.sleep(1000);
+			break;
+		case "rum":
+			driver.findElement(By.cssSelector("#\\31")).click();
+			Thread.sleep(1000);
+			break;
+		case "domesticwhisky":
+			driver.findElement(By.cssSelector("#\\32")).click();
+			Thread.sleep(1000);
+			break;
+		case "importedwhiskey":
+			driver.findElement(By.cssSelector("#\\33")).click();
+			Thread.sleep(1000);
+			break;
+		case "singlemaltwhiskey":
+			driver.findElement(By.cssSelector("#\\34")).click();
+			Thread.sleep(1000);
+			break;
+		case "domesticwine":
+			driver.findElement(By.cssSelector("#\\35")).click();
+			Thread.sleep(1000);
+			break;
+		case "importedwine":
+			driver.findElement(By.cssSelector("#\\36")).click();
+			Thread.sleep(1000);
+			break;
+		case "vodka":
+			driver.findElement(By.cssSelector("#\\37")).click();
+			Thread.sleep(1000);
+			break;
+		case "gin":
+			driver.findElement(By.cssSelector("#\\38")).click();
+			Thread.sleep(1000);
+			break;
+		case "tequila":
+			driver.findElement(By.cssSelector("#\\39")).click();
+			Thread.sleep(1000);
+			break;
+		case "brandy":
+			driver.findElement(By.cssSelector("#\\31 0")).click();
+			Thread.sleep(1000);
+			break;
+		case "liqueur":
+			driver.findElement(By.cssSelector("#\\31 1")).click();
+			Thread.sleep(1000);
+			break;
+		}
+		}
+		else if(city.equals("Bengaluru")) {
+			String genre = "beer";
+			switch(genre) {
+			case "beer":
+				driver.findElement(By.cssSelector("#\\30")).click();
+				Thread.sleep(1000);
+				break;
+			case "rtd":
+				driver.findElement(By.cssSelector("#\\31")).click();
+				Thread.sleep(1000);
+				break;
+			case "rum":
+				driver.findElement(By.cssSelector("#\\32")).click();
+				Thread.sleep(1000);
+				break;
+			case "domesticwhiskey":
+				driver.findElement(By.cssSelector("#\\33")).click();
+				Thread.sleep(1000);
+				break;
+			case "importedwhiskey":
+				driver.findElement(By.cssSelector("#\\34")).click();
+				Thread.sleep(1000);
+				break;
+			case "singlemaltwhiskey":
+				driver.findElement(By.cssSelector("#\\35")).click();
+				Thread.sleep(1000);
+				break;
+			case "domesticwine":
+				driver.findElement(By.cssSelector("#\\36")).click();
+				Thread.sleep(1000);
+				break;
+			case "vodka":
+				driver.findElement(By.cssSelector("#\\37")).click();
+				Thread.sleep(1000);
+				break;
+			}
+			
+		}
+		else if(city.equals("Hyd")) {
+			String genre = "singlemaltwhiskey";
+			switch(genre) {
+			case "countyside":
+				driver.findElement(By.cssSelector("#\\30")).click();
+				Thread.sleep(1000);
+				break;
+			case "domesticwhiskey":
+				driver.findElement(By.cssSelector("#\\31")).click();
+				Thread.sleep(1000);
+				break;
+			case "singlemaltwhiskey":
+				driver.findElement(By.cssSelector("#\\32")).click();
+				Thread.sleep(1000);
+				break;
+			}
+			
+		}
+		
+		driver.findElement(By.cssSelector("#send-gift-drink > div > div > div > div:nth-child(2) > div:nth-child(4) > a > button")).click();
+		//click on view drinks button
+		Thread.sleep(2000);
+		
+		
+		//Below if condition is to switch city using drop down menu
+		boolean f = false;
+		if(city.length() == 3 && f == true) {
+		Select changecity = new Select(driver.findElement(By.cssSelector("#product--listing__w-header > div:nth-child(1) > div > div > select")));
+		changecity.selectByValue("1");
+		}
+		if(city.length() == 7 && f == true) {
+			Select changecity = new Select(driver.findElement(By.cssSelector("#product--listing__w-header > div:nth-child(1) > div > div > select")));
+		changecity.selectByValue("0");
+		}
+		if(city.length() == 9 && f == true) {
+			Select changecity = new Select(driver.findElement(By.cssSelector("#product--listing__w-header > div:nth-child(1) > div > div > select")));
+			changecity.selectByValue("2");
+		}
+	}
+	}
+		

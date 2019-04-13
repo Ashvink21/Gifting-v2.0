@@ -1,0 +1,16 @@
+package gifting_web;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Browser extends Main {
+	public static void openBrowser() {
+		System.setProperty("webdriver.chrome.driver", "/home/ashvin/eclipse-workspace/Dcfc/BrowserDrivers/chromedriver");
+		driver=new ChromeDriver();
+		driver.manage().window().maximize();
+
+}
+	public static void enterURL(String URL) throws InterruptedException {
+		driver.get(URL);
+		Thread.sleep(3000);
+	}
+}

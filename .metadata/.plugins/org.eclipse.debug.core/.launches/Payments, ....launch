@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.testng.eclipse.launchconfig">
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.testng.remote.RemoteTestNG"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Gifting"/>
+    <mapAttribute key="org.testng.eclipse.ALL_CLASS_METHODS"/>
+    <listAttribute key="org.testng.eclipse.CLASS_TEST_LIST">
+        <listEntry value="gifting_web.Agegate"/>
+        <listEntry value="gifting_web.ReportFormat"/>
+        <listEntry value="gifting_web.GiftingV2"/>
+        <listEntry value="gifting_web.Browser"/>
+        <listEntry value="gifting_web.Homepage"/>
+        <listEntry value="gifting_web.Main"/>
+        <listEntry value="gifting_web.Redeeminggiftcards"/>
+        <listEntry value="gifting_web.Sendgiftcards"/>
+        <listEntry value="gifting_web.Payments"/>
+    </listAttribute>
+    <listAttribute key="org.testng.eclipse.METHOD_TEST_LIST"/>
+    <listAttribute key="org.testng.eclipse.PACKAGE_TEST_LIST"/>
+    <stringAttribute key="org.testng.eclipse.PRE_DEFINED_LISTENERS" value=""/>
+    <intAttribute key="org.testng.eclipse.TYPE" value="1"/>
+</launchConfiguration>

@@ -1,0 +1,65 @@
+package gifting_web;
+
+import java.util.Random;
+
+import org.apache.commons.lang.RandomStringUtils;
+import org.openqa.selenium.By;
+
+public class Sendgiftcards extends Main {
+	public static void sendGCtab() throws InterruptedException {
+		driver.findElement(By.xpath("//*[@id=\"nav-item-1\"]")).click();
+		Thread.sleep(4000);
+	}
+	public static void switchcase( int amount) throws InterruptedException {
+		
+		switch(amount) {
+		case 500:
+			driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/div[1]/div/div[2]/div[1]/div/div[1]/input")).click();
+			break;
+		case 1000:
+			driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/div[1]/div/div[2]/div[1]/div/div[2]/input")).click();
+			break;
+		case 2000:
+			driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/div[1]/div/div[2]/div[1]/div/div[3]/input")).click();
+			break;
+		}
+	}
+		public static void otherBtn_click() throws InterruptedException {
+			Random rand = new Random();
+			int n = rand.nextInt(10000) + 100;
+			driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/div[1]/div/div[2]/div[1]/div/div[4]/input")).sendKeys(String.valueOf(n));
+			Thread.sleep(2000);
+			
+	}
+		public static void personalmessage_click() throws InterruptedException {
+			String generatedString = RandomStringUtils.randomAlphabetic(250);
+		    System.out.println(generatedString);
+			driver.findElement(By.xpath("//*[@id=\"send-gift\"]/div[2]/div/div[1]/div/div[2]/div[2]/textarea")).sendKeys(generatedString);
+			Thread.sleep(2500);
+			
+		}
+		public static void receivername_click() throws InterruptedException {
+			String s = RandomStringUtils.randomAlphabetic(8); 
+			System.out.println(s);
+			driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/div[1]/div/div[3]/div[1]/input")).sendKeys(s);
+			Thread.sleep(1500);
+		}
+		public static void receiverno_click() throws InterruptedException {
+			Random objGenerator = new Random();
+            for (int iCount = 0; iCount< 10; iCount++){
+              int randomNumber = objGenerator.nextInt(500000000);
+              System.out.println("Random No : " + randomNumber); 
+              driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/div[1]/div/div[3]/div[2]/div/input")).sendKeys(String.valueOf(randomNumber));
+              Thread.sleep(2500);
+             }
+		}
+		public static void sendername_click() throws InterruptedException {
+			driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/div[1]/div/div[4]/div[1]/input")).sendKeys("Ashvin");
+			Thread.sleep(1500);
+		}
+		public static void senderno_click(long number) throws InterruptedException {
+			driver.findElement(By.xpath("/html/body/div[1]/div/div/div[2]/div[1]/div[2]/div/div[1]/div/div[4]/div[2]/div/input")).sendKeys("number");
+			Thread.sleep(1500);
+		}
+		}
+

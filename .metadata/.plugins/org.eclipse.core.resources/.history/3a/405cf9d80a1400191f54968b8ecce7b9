@@ -1,0 +1,93 @@
+package gifting_web;
+
+import java.util.ArrayList;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+
+public class Main {
+	public static WebDriver driver;
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		Browser.openBrowser();
+		// TODO Open chrome browser and maximize the window
+		Browser.enterURL("https://gifting-web.amebae21.hasura-app.io");
+		// TODO Opens the gifting URL
+		Agegate.legalAge();
+		//TODO Legal drinking age link is opened
+	    Agegate.switchTabs();
+	    //TODO Closes the newly opened link
+	    //TODO Displays the previous tab
+		Agegate.agreeBtn_click();
+		//TODO Agree button on Age pop-up is clicked
+		driver.findElement(By.xpath("//*[@id=\"landing\"]/div[1]/div/div[1]/div/a/button")).click();
+		Thread.sleep(2000);
+		//TODO Start gifting button at the top of the page is clicked
+		driver.navigate().back();
+		Thread.sleep(2000);
+		//TODO It will navigate back to the homepage
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("window.scrollBy(0,500)", "");
+		Thread.sleep(2000);
+		jse.executeScript("window.scrollBy(0,500)", "");
+		Thread.sleep(2000);
+		jse.executeScript("window.scrollBy(0,500)", "");
+		Thread.sleep(2000);
+		jse.executeScript("window.scrollBy(0,500)", "");
+		Thread.sleep(2000);
+		jse.executeScript("window.scrollBy(0,500)", "");
+		Thread.sleep(2000);
+		//TODO Scrolls down the page five times
+		driver.findElement(By.xpath("//*[@id=\"landing\"]/div[5]/div[3]/div/a[1]")).click();
+		Thread.sleep(4000);
+		//TODO Apple store button is clicked
+		ArrayList<String> tabs3 = new ArrayList<String> (driver.getWindowHandles());
+		driver.switchTo().window(tabs3.get(1));
+	    driver.close();
+	    Thread.sleep(2000);
+	    //TODO Closes the apple store tab
+	    driver.switchTo().window(tabs3.get(0));
+	    Thread.sleep(2000);
+	    //TODO Displays the homepage
+	    driver.findElement(By.xpath("//*[@id=\"landing\"]/div[5]/div[3]/div/a[2]")).click();
+	    Thread.sleep(4000);
+	    //TODO Play store button is clicked
+	    ArrayList<String> tabs4 = new ArrayList<String> (driver.getWindowHandles());
+		driver.switchTo().window(tabs4.get(1));
+	    driver.close();
+	    Thread.sleep(2000);
+	    //TODO Closes the play store tab
+	    driver.switchTo().window(tabs4.get(0));
+	    Thread.sleep(2000);
+	    //TODO Displays the homepage
+	    jse.executeScript("window.scrollBy(0,500)", "");
+		Thread.sleep(2000);
+		//TODO Scrolls down one time
+	    driver.findElement(By.xpath("//*[@id=\"landing\"]/div[6]/a/button")).click();
+	    Thread.sleep(3000);
+	    //TODO Retail outlets button is clicked
+	    driver.navigate().back();
+	    Thread.sleep(2000);
+	    //TODO It will navigate back to homepage
+	    jse.executeScript("window.scrollBy(0,-500)", "");
+		Thread.sleep(2000);
+		jse.executeScript("window.scrollBy(0,-500)", "");
+		Thread.sleep(2000);
+		jse.executeScript("window.scrollBy(0,-500)", "");
+		Thread.sleep(2000);
+		jse.executeScript("window.scrollBy(0,-500)", "");
+		Thread.sleep(2000);
+		jse.executeScript("window.scrollBy(0,-500)", "");
+		Thread.sleep(2000);
+		jse.executeScript("window.scrollBy(0,-500)", "");
+		Thread.sleep(2000);
+		//TODO Scrolls up the page five times
+		driver.findElement(By.xpath("/html/body/div[1]/div/div/div[1]/div[1]/a[1]/div")).click();
+		Thread.sleep(3000);
+		//TODO Send gift cards tab link is clicked
+
+	}
+
+}

@@ -1,0 +1,11 @@
+package gifting_web;
+
+import org.openqa.selenium.By;
+
+public class Sendgiftcards extends Main {
+	public static void sendGCtab() throws InterruptedException {
+		driver.findElement(By.xpath("/html/body/div[1]/div/div/div[1]/div[1]/a[1]/div")).click();
+		Thread.sleep(3000);
+	}
+
+}

@@ -1,0 +1,27 @@
+package gifting_web;
+
+import java.util.ArrayList;
+
+import org.openqa.selenium.By;
+
+public class Age_gate extends Main {
+	public static void legalAge() throws InterruptedException {
+		driver.findElement(By.xpath("//*[@id=\"confirm-modal\"]/div/div/div[2]/div/a")).click();
+		Thread.sleep(2000);
+
+}
+	public static void switchTabs() throws InterruptedException {
+		ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+	    driver.switchTo().window(tabs2.get(1));
+	    Thread.sleep(2000);
+	    driver.close();
+	    Thread.sleep(2000);
+	    driver.switchTo().window(tabs2.get(0));
+	    Thread.sleep(2000);
+		
+	}
+	public static void agreeBtn_click() throws InterruptedException {
+		driver.findElement(By.xpath("//*[@id=\"confirm-modal\"]/div/div/div[3]/button[2]")).click();
+		Thread.sleep(2000);
+	}
+}

@@ -1,0 +1,256 @@
+package gifting_web;
+
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
+
+public class GiftingV2 extends Main
+{
+	public static String city;
+	
+public static void start_gifting_button() throws IOException, InterruptedException
+{
+	driver.findElement(By.cssSelector("#landing-new > div.hero-container > div.hero-content > a > button")).click();
+	//click on start gifting button
+	System.out.println("Start gifting button is clicked on Homepage");
+	Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Get_started"+timestamp()+".png");
+	Thread.sleep(3000);	
+}
+
+public static void get_started_button() throws InterruptedException
+{
+	driver.findElement(By.cssSelector("#getstarted > div > div > div > div:nth-child(4) > a > button")).click();
+	//click on get started button
+	System.out.println("Get started button is clicked");
+	Thread.sleep(1000);
+}
+
+public static void recipient_name(String name) throws IOException, InterruptedException
+{
+	driver.findElement(By.cssSelector("#send-gift-name > div > div > div > div:nth-child(2) > div > input[type=\"text\"]")).sendKeys(name);
+	//click on receiver name input and enter the name in the text box
+	Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_name"+timestamp()+".png");
+	System.out.println("Recipient Name entered:" +name);
+	Thread.sleep(1000);
+}
+
+public static void select_city_button() throws IOException, InterruptedException
+{
+	driver.findElement(By.cssSelector("#send-gift-name > div > div > div > div:nth-child(3) > a > button")).click();
+	//click on select city button
+	Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_city"+timestamp()+".png");
+	System.out.println("Select city button is clicked");
+	Thread.sleep(1000);
+}
+
+public static void choose_city(String city) throws InterruptedException, IOException
+{
+	switch(city) 
+	{
+	case "Chennai":
+		driver.findElement(By.id("5")).click();
+		Thread.sleep(1000);
+		Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/City_selection"+timestamp()+".png");
+		System.out.println("Chennai city is selected");
+		break;
+	case "Bengaluru":
+		driver.findElement(By.xpath("//*[@id=\"1\"]")).click();
+		Thread.sleep(1000);
+		Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/City_selection"+timestamp()+".png");
+		System.out.println("Bengaluru city is selected");
+		break;
+	case "Hyd":
+		driver.findElement(By.cssSelector("#\\31 6")).click();
+		Thread.sleep(1000);
+		Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/City_selection"+timestamp()+".png");
+		System.out.println("Hyderabad city is selected");
+		break;
+	}
+}
+
+public static void recipient_fav_drink_button() throws IOException, InterruptedException
+{
+	driver.findElement(By.cssSelector("#send-gift-city > div > div > div > div:nth-child(2) > div:nth-child(4) > a > button")).click();
+	//click on recipient favorite drink button
+	Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_drink"+timestamp()+".png");
+	System.out.println("Recipient favorite drink button is clicked");
+	Thread.sleep(1000);
+}
+
+public static void select_genre(String city_name,String genre) throws IOException, InterruptedException
+{
+	if(city.equals(city_name)) 
+	{
+		System.out.println("Selected genre:" +genre);
+		switch(genre) 
+		{
+		case "beer":
+			driver.findElement(By.cssSelector("#\\30")).click();
+			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+			Thread.sleep(1000);
+			break;
+		case "rum":
+			driver.findElement(By.cssSelector("#\\31")).click();
+			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+			Thread.sleep(1000);
+			break;
+		case "domesticwhisky":
+			driver.findElement(By.cssSelector("#\\32")).click();
+			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+			Thread.sleep(1000);
+			break;
+		case "importedwhiskey":
+			driver.findElement(By.cssSelector("#\\33")).click();
+			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+			Thread.sleep(1000);
+			break;
+		case "singlemaltwhiskey":
+			driver.findElement(By.cssSelector("#\\34")).click();
+			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+			Thread.sleep(1000);
+			break;
+		case "domesticwine":
+			driver.findElement(By.cssSelector("#\\35")).click();
+			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+			Thread.sleep(1000);
+			break;
+		case "importedwine":
+			driver.findElement(By.cssSelector("#\\36")).click();
+			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+			Thread.sleep(1000);
+			break;
+		case "vodka":
+			driver.findElement(By.cssSelector("#\\37")).click();
+			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+			Thread.sleep(1000);
+			break;
+		case "gin":
+			driver.findElement(By.cssSelector("#\\38")).click();
+			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+			Thread.sleep(1000);
+			break;
+		case "tequila":
+			driver.findElement(By.cssSelector("#\\39")).click();
+			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+			Thread.sleep(1000);
+			break;
+		case "brandy":
+			driver.findElement(By.cssSelector("#\\31 0")).click();
+			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+			Thread.sleep(1000);
+			break;
+		case "liqueur":
+			driver.findElement(By.cssSelector("#\\31 1")).click();
+			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+			Thread.sleep(1000);
+			break;
+		}
+		}
+		else if(city.equals(city_name)) 
+		{
+			switch(genre) 
+			{
+			case "beer":
+				driver.findElement(By.cssSelector("#\\30")).click();
+				Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+				Thread.sleep(1000);
+				break;
+			case "rtd":
+				driver.findElement(By.cssSelector("#\\31")).click();
+				Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+				Thread.sleep(1000);
+				break;
+			case "rum":
+				driver.findElement(By.cssSelector("#\\32")).click();
+				Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+				Thread.sleep(1000);
+				break;
+			case "domesticwhiskey":
+				driver.findElement(By.cssSelector("#\\33")).click();
+				Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+				Thread.sleep(1000);
+				break;
+			case "importedwhiskey":
+				driver.findElement(By.cssSelector("#\\34")).click();
+				Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+				Thread.sleep(1000);
+				break;
+			case "singlemaltwhiskey":
+				driver.findElement(By.cssSelector("#\\35")).click();
+				Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+				Thread.sleep(1000);
+				break;
+			case "domesticwine":
+				driver.findElement(By.cssSelector("#\\36")).click();
+				Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+				Thread.sleep(1000);
+				break;
+			case "vodka":
+				driver.findElement(By.cssSelector("#\\37")).click();
+				Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+				Thread.sleep(1000);
+				break;
+			}
+			
+		}
+		else if(city.equals(city_name)) 
+		{
+			switch(genre) 
+			{
+			case "countyside":
+				driver.findElement(By.cssSelector("#\\30")).click();
+				Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+				Thread.sleep(1000);
+				break;
+			case "domesticwhiskey":
+				driver.findElement(By.cssSelector("#\\31")).click();
+				Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+				Thread.sleep(1000);
+				break;
+			case "singlemaltwhiskey":
+				driver.findElement(By.cssSelector("#\\32")).click();
+				Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Recipient_fav_genre"+timestamp()+".png");
+				Thread.sleep(1000);
+				break;
+			}
+		}
+}
+
+public static void view_drinks_button() throws IOException, InterruptedException 
+{
+	driver.findElement(By.cssSelector("#send-gift-drink > div > div > div > div:nth-child(2) > div:nth-child(4) > a > button")).click();
+	//click on view drinks button
+	System.out.println("View drinks button is clicked");
+	Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/View_drinks"+timestamp()+".png");
+	Thread.sleep(2000);
+}
+
+public static void switch_city(boolean condition,int number,boolean condition1) throws IOException, InterruptedException
+{
+	//Below if condition is to switch city using drop down menu
+			boolean f = condition;
+			if(city.length() == number && f == condition1) 
+			{
+			Select changecity = new Select(driver.findElement(By.cssSelector("#product--listing__w-header > div:nth-child(1) > div > div > select")));
+			changecity.selectByValue("1");
+			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Change_city"+timestamp()+".png");
+			Thread.sleep(1000);
+			}
+			else if(city.length() == number && f == condition1) 
+			{
+				Select changecity = new Select(driver.findElement(By.cssSelector("#product--listing__w-header > div:nth-child(1) > div > div > select")));
+			changecity.selectByValue("0");
+			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Change_city"+timestamp()+".png");
+			Thread.sleep(1000);
+			}
+			else if(city.length() == number && f == condition1) 
+			{
+				Select changecity = new Select(driver.findElement(By.cssSelector("#product--listing__w-header > div:nth-child(1) > div > div > select")));
+				changecity.selectByValue("2");
+				Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Change_city"+timestamp()+".png");
+				Thread.sleep(1000);
+			}
+}
+
+}

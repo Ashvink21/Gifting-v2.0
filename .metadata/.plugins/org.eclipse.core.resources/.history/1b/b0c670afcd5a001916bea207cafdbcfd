@@ -1,0 +1,9 @@
+package gifting_web;
+
+import org.testng.annotations.Test;
+
+public class ReportFormat {
+  @Test
+  public void f() {
+  }
+}

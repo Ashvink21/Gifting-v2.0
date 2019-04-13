@@ -1,0 +1,40 @@
+package test;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Screenshot {
+	 public static WebDriver driver;
+	    @Parameters({"filename"})
+	    @Test
+	    public static void snap(String filename) throws IOException {
+	 
+	    	System.setProperty("webdriver.chrome.driver", "/home/ashvin/eclipse-workspace/Dcfc/BrowserDrivers/chromedriver");
+			driver=new ChromeDriver();
+			driver.manage().window().maximize();
+	        String url ="https://www.inc.com/peter-economy/17-super-positive-quotes-that-will-inspire-you-to-be-exceptional.html";
+	        driver.get(url);
+	 
+	 
+	        DateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy h-m-s");
+	        Date date = new Date();
+	        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	        filename="Super_Selenium";
+	        FileUtils.copyFile(scrFile, new File("D:\\SeleniumScreenshot_pass\\"+filename+"-"+dateFormat.format(date)+".png"));
+	        driver.quit();
+	 
+	 
+	 
+	 
+	    }
+	}
+	

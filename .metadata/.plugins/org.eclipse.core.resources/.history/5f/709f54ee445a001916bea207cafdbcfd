@@ -1,0 +1,213 @@
+package gifting_web;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.RandomStringUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+//import com.sun.org.apache.xpath.internal.operations.VariableSafeAbsRef;
+
+public class Main {
+	public static WebDriver driver;
+
+	public static void main(String[] args) throws InterruptedException, IOException {
+		// TODO Auto-generated method stub
+		Browser.openBrowser();
+		// Open chrome browser and maximize the window
+		Browser.enterURL("https://gifting-web.amebae21.hasura-app.io");
+		// Opens the gifting URL
+		Agegate.agegate_button_type("Agree");
+		// Agree button is clicked based on switch case type 
+		GiftingV2.start_gifting_button();
+		// Start gifting button is clicked
+		GiftingV2.get_started_button();
+		// Get started button is clicked
+		GiftingV2.recipient_name("Ash");
+		// Recipient name is passed as String parameters
+		GiftingV2.select_city_button();
+		// Select city button is clicked
+		GiftingV2.choose_city("Chennai");
+		// Recipient residing city is selected based on String parameters
+		GiftingV2.recipient_fav_drink_button();
+		// Recipient favourite drink button is clicked
+		GiftingV2.select_genre("Chennai", "beer");
+		// Recipient favourite genre is selected based on city
+		GiftingV2.view_drinks_button();
+		// View drinks button is clicked
+		GiftingV2.switch_city(false, 3, true);
+		// City is changed based on city length and boolean variable declaration(i.e true or false)
+        GiftingV2.city_based_iteration("Chennai");	
+        // Based on the selected city the iteration for adding drinks is carried out by a for loop
+		GiftingV2.gift_basket_button();
+		// Gift basket button is clicked
+		GiftingV2.promo_codes("Signin-Apply");
+		// Signin to apply promo codes is clicked and all its actions are taken place here
+		GiftingV2.personalise_button();
+		// Personalise button is clicked
+		    
+		    
+		    
+		        
+	            
+	            switch("Manual") {
+	            case "Manual":
+	            	Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Personal_message"+timestamp()+".png");
+	            	driver.findElement(By.xpath("//*[@id=\"giftInputForm\"]/div/div/div[3]/div/textarea")).sendKeys("Hi, Enjoy your drink!");
+	            	Thread.sleep(1000);
+	            	System.out.println("Personal message entered is hardcoded");
+	            	break;
+	            case"Automatic":
+	            	String generatedString = RandomStringUtils.randomAlphabetic(250);
+	    		    System.out.println(generatedString);
+	    		    Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Personalise_button"+timestamp()+".png");
+	    			driver.findElement(By.xpath("//*[@id=\\\"giftInputForm\\\"]/div/div/div[3]/div/textarea")).sendKeys(generatedString);
+	    			System.out.println("Personal message entered is auto generated");
+	    			Thread.sleep(1500);
+	    			
+	    			break;
+	            }
+	            
+	            JavascriptExecutor jse = (JavascriptExecutor)driver;
+	    		jse.executeScript("window.scrollBy(0,400)", "");
+	    		Thread.sleep(1000);
+	    		Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Receiver_number"+timestamp()+".png");
+	    		driver.findElement(By.xpath("//*[@id=\"giftInputForm\"]/div/div/div[4]/div[2]/div/input")).sendKeys("9940191137");
+	    		Thread.sleep(1000);
+	    		System.out.println("Receiver mobile number entered is hardcoded");
+	    		jse.executeScript("window.scrollBy(0,400)", "");
+	    		Thread.sleep(1000);
+	    		Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Checkbox_button"+timestamp()+".png");
+	    		driver.findElement(By.xpath("//*[@id=\"giftInputForm\"]/div/div/div[5]/div[3]/div/span[1]")).click();
+	    		Thread.sleep(1000);
+	    		System.out.println("Checkbox is clicked");
+	    	
+	    		
+	    		boolean a = false;
+	            WebElement tc = driver.findElement(By.linkText("Terms & Conditions"));
+	            
+	            
+	            if(tc.isDisplayed() && a == true) 
+	            {
+	            	tc.click();
+	                System.out.println("Terms&Conditions link is clicked and opened in a new tab");
+	                Thread.sleep(1500);
+	                Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/T&C_link"+timestamp()+".png");
+	                System.out.println("Terms and conditions <a> link is being clicked and opened in a new tab");
+	                ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
+	                driver.switchTo().window(tabs1.get(0));
+	                Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Previous_window"+timestamp()+".png");
+	                System.out.println("Switch back to the old tab");
+	                Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Proceed_to_pay_button"+timestamp()+".png");
+	                driver.findElement(By.xpath("//*[@id=\"giftInputForm\"]/div/div/div[6]/button")).click();
+	            	Thread.sleep(1500);
+	            	System.out.println("Proceed to Pay button is clicked");
+	            }
+	            else 
+	            {
+	            	Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Proceed_to_pay_button"+timestamp()+".png");
+	            	driver.findElement(By.xpath("//*[@id=\"giftInputForm\"]/div/div/div[6]/button")).click();
+	            	Thread.sleep(1500);
+	            	System.out.println("Proceed to Pay button is clicked");
+	            }
+	    		
+	            String payment_type = "Debit/Credit";
+	            
+	            switch(payment_type) {
+	            
+	            case "Debit/Credit":
+	            	Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Payment_page"+timestamp()+".png");
+	            	driver.findElement(By.xpath("//*[@id=\"1\"]")).click();
+	            	Thread.sleep(1500);
+	            	Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Debit_Credit_radio_button"+timestamp()+".png");
+	            	System.out.println("Debit/Credit card radio button is clicked");
+	            	jse.executeScript("window.scrollBy(0,400)", "");
+		    		Thread.sleep(2000);
+	            	driver.findElement(By.xpath("//*[@id=\"checkout\"]/div/div/div[2]/div[1]/div/div/div[4]/div[2]/div[1]/input")).sendKeys("4242424242424242");
+	            	Thread.sleep(2000);
+	            	Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Card_number"+timestamp()+".png");
+	            	System.out.println("Card Number is entered and it is hardcoded");
+	            	driver.findElement(By.xpath("//*[@id=\"checkout\"]/div/div/div[2]/div[1]/div/div/div[4]/div[2]/div[2]/div[1]/input")).sendKeys("0520");
+	            	Thread.sleep(2000);
+	            	Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Expiry_date"+timestamp()+".png");
+	            	System.out.println("Expiry date is entered and it is hardcoded");
+	            	driver.findElement(By.xpath("//*[@id=\"checkout\"]/div/div/div[2]/div[1]/div/div/div[4]/div[2]/div[2]/div[2]/input")).sendKeys("111");
+	            	Thread.sleep(2000);
+	            	Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/CVV"+timestamp()+".png");
+	            	System.out.println("CVV is entered and it is hardcoded");
+	            	driver.findElement(By.xpath("//*[@id=\"checkout\"]/div/div/div[2]/div[1]/div/div/div[4]/div[2]/div[3]/input")).sendKeys("Test");
+	            	Thread.sleep(2000);
+	            	Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Name_on_the_card"+timestamp()+".png");
+	            	System.out.println("Name on the card is entered and it is hardcoded");
+	            	jse.executeScript("window.scrollBy(0,300)", "");
+		    		Thread.sleep(1500);
+		    		Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Pay_button"+timestamp()+".png");
+		    		driver.findElement(By.xpath("//*[@id=\"checkout\"]/div/div/div[2]/div[2]/button")).click();
+		    		System.out.println("Pay button is clicked");
+		    		Thread.sleep(8000);
+		    		
+		    		String title = driver.getCurrentUrl();
+		    		if(title.contains("transaction-successful")) 
+		    		{
+		    			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Transaction_successful"+timestamp()+".png");
+		    			driver.findElement(By.xpath("//*[@id=\"header\"]/div/div[2]/div/span[2]")).click();
+		    			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Logout_drop_down_button"+timestamp()+".png");
+		    			System.out.println("Logout drop down button is clicked");
+		    			Thread.sleep(1000);
+		    			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Transaction_history"+timestamp()+".png");
+		    			driver.findElement(By.xpath("//*[@id=\"header\"]/div/div[2]/div/div[2]/div[1]")).click();
+		    			System.out.println("Under the logout drop down button transaction history is clicked");
+		    			Thread.sleep(1500);
+		    			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/TransactionHistory.png");
+		    			jse.executeScript("window.scrollBy(0,300)", "");
+			    		Thread.sleep(1000);
+			    		Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/TransactionHistory1.png");
+			    		Thread.sleep(1000);
+			    		driver.findElement(By.xpath("//*[@id=\"header\"]/div/div[2]/div/span[2]")).click();
+		    			System.out.println("Logout drop down button is clicked");
+		    			Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/Sign_out_button"+timestamp()+".png");
+			    		driver.findElement(By.xpath("//*[@id=\"header\"]/div/div[2]/div/div[2]/div[2]")).click();
+			    		System.out.println("Under the logout drop down button sign out is clicked");
+			    		Thread.sleep(1500);
+			    		Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/SignOutPage.png");
+			    		Thread.sleep(1000);
+			    		Browser.screenshot("/home/ashvin/Desktop/AutomationScreenshots/After_sign_out"+timestamp()+".png");
+		    		}
+		    		else 
+		    		{
+		    			System.out.println("transaction-failed");
+		    		}
+		    		break;
+		    		
+	            case "Netbanking":
+	            	driver.findElement(By.xpath("//*[@id=\"2\"]")).click();
+	            	System.out.println("Netbanking radio button is clicked");
+	            	Thread.sleep(1000);
+	            	
+	            	break;
+	            }
+	            
+	            driver.quit();
+	            
+		        
+		    }
+
+	protected static String timestamp() {
+		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+	}
+        }
+		

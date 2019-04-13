@@ -1,0 +1,38 @@
+package testNG_test;
+
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class PinChange extends WebTestBase {
+	public static void cedge() throws InterruptedException {
+		((JavascriptExecutor) driver).executeScript("window.open()");
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));
+		driver.get("http://172.30.7.11/MOBILEWALLET_HIPBAR_PROD/Login.aspx");
+		//Thread.sleep(4000);
+		WebDriverWait wait = new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#Form1 > div.content > input.input.username")));
+		driver.findElement(By.cssSelector("#Form1 > div.content > input.input.username")).sendKeys("ho");
+		//driver.findElement(By.cssSelector("#Form1 > div.content > input.input.username")).sendKeys("ho");
+		Thread.sleep(1500);
+		driver.findElement(By.cssSelector("#Form1 > div.content > input.input.password")).sendKeys("edge@123");
+		Thread.sleep(1500);
+		driver.findElement(By.id("btnLogIn")).click();
+		//driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		WebDriverWait wait = new WebDriverWait(driver,30);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"navigation\"]/ul/li[1]/a")));
+		driver.findElement(By.xpath("//*[@id=\\\"navigation\\\"]/ul/li[1]/a")).click();
+		driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+		
+		
+
+		
+		
+	}
+
+}

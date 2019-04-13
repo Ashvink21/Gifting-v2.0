@@ -1,0 +1,13 @@
+package testNG_test;
+
+import org.testng.annotations.Test;
+
+public class NewTest {
+  
+  public void f() throws InterruptedException {
+	  Browser.openBrowser();
+	  Browser.enterUrl("https://www.hipbar.com");
+	  Email.MandrillDotCom();
+	  SMS.msg91();
+  }
+}

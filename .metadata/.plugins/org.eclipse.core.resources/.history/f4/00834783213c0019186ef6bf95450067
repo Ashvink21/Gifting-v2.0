@@ -1,0 +1,84 @@
+package gifting_web;
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Main {
+	public static WebDriver driver;
+
+	public static void main(String[] args) throws InterruptedException, IOException {
+		// TODO Auto-generated method stub
+		Browser.openBrowser();
+		// TODO Open chrome browser and maximize the window
+		Browser.enterURL("https://gifting-web.amebae21.hasura-app.io/age-gate");
+		// TODO Opens the gifting URL
+//		if(driver.getCurrentUrl().contains("https://gifting-web.amebae21.hasura-app.io/age-gate")) {
+//			System.out.println("Gifting website is loaded");
+//		}
+//			else {
+//			System.out.println("Gifting website is not loaded");
+//		}
+        //WebDriverWait wait = new WebDriverWait(driver,30);
+		//wait.until(ExpectedConditions.urlMatches("https://gifting-web.amebae21.hasura-app.io/age-gate"));
+		//File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		//FileUtils.copyFile(scrFile, new File(":/home/ashvin/Desktop/screenshot.png"));
+		Thread.sleep(6000);
+		File src= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		try {
+		 // now copy the  screenshot to desired location using copyFile //method
+		FileUtils.copyFile(src, new File("/home/ashvin/Desktop/AutomationScreenshots/AgeGate.png"));
+		}
+		catch (IOException e)
+		 {
+		  System.out.println(e.getMessage());
+		 
+		 }
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("/html/body/div[1]/div/div/div/div[2]/button[2]")).click();
+		Agegate.agreeBtn_click();
+		//TODO Agree button on Age pop-up is clicked
+		Sendgiftcards.sendGCtab();
+		//TODO Send gift cards tab link is clicked
+		//{
+		//Sendgiftcards.switchcase(2);
+		//Sendgiftcards.otherBtn_click();
+		//Browser.scroll1p();
+		//Sendgiftcards.personalmessage_click("edit");
+		//Sendgiftcards.receivername_click("Ash");
+		//Sendgiftcards.receiverno_click(9940191137L);
+		//Browser.scroll1p();
+		//Sendgiftcards.sendername_click("Ashvin");
+		//Sendgiftcards.senderno_click(9940191137L);
+		//Sendgiftcards.sgctc();
+		//Sendgiftcards.switchTabs();
+		//Sendgiftcards.checkbox_click();
+		//Sendgiftcards.signinBtn_click();
+		//Sendgiftcards.msg91();
+		//Sendgiftcards.card_details(5123456789012346L);
+		//Sendgiftcards.TxnHistory_Btn();
+		//Sendgiftcards.signout_Btn();
+		//}
+		Redeeminggiftcards.redeemingGCtab();
+		Redeeminggiftcards.appleBtn_click();
+		Redeeminggiftcards.switchtabs();
+		Redeeminggiftcards.playstoreBtn_click();
+		Redeeminggiftcards.switchtabs();
+		Browser.scroll1p();
+		Redeeminggiftcards.retailoutletsBtn_click();
+		Browser.navigateBack();
+		Browser.scroll1p();
+		Redeeminggiftcards.startgiftingBtn_click();
+		Browser.navigateBack();
+		Browser.scroll2n();
+
+	}
+
+}

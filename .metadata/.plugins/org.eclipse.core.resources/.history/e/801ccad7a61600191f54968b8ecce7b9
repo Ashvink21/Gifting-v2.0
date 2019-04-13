@@ -1,0 +1,31 @@
+package gifting_web;
+import org.openqa.selenium.WebDriver;
+
+public class Main {
+	public static WebDriver driver;
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		Browser.openBrowser();
+		// TODO Open chrome browser and maximize the window
+		Browser.enterURL("https://gifting-web.amebae21.hasura-app.io");
+		// TODO Opens the gifting URL
+		Agegate.agreeBtn_click();
+		//TODO Agree button on Age pop-up is clicked
+		Sendgiftcards.sendGCtab();
+		//TODO Send gift cards tab link is clicked
+		Sendgiftcards.switchcase(2);
+		Sendgiftcards.otherBtn_click();
+		Browser.scroll1p();
+		Sendgiftcards.personalmessage_click();
+		Sendgiftcards.receivername_click();
+		Sendgiftcards.receiverno_click();
+		Browser.scroll1p();
+		Sendgiftcards.sendername_click("Ashvin");
+		Sendgiftcards.senderno_click(9940191137L);
+		Sendgiftcards.sgctc();
+		Sendgiftcards.switchTabs();
+
+	}
+
+}
